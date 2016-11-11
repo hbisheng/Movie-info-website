@@ -1,0 +1,29 @@
+<div uib-alert ng-class="'alert-danger'" ng-show="error_msg!=null"> 
+	{{error_msg}}
+</div>
+
+<div class="container" ng-show="actor!=null">
+<h2> {{actor.first + " " + actor.last}} ({{ actor.dod? actor.dob+"~"+actor.dod : actor.dob+"~" }})</h2>
+<h4> Sex: {{actor.sex}}</h4>
+
+	<table class="table table-striped" ng-show="movies_with_actor!=null">
+		<h2 ng-show="movies_with_actor!=null"> Movies acted: </h2>
+		<thead>
+		<tr>
+			<th>Title</th>
+			<th>Year</th>
+			<th>Rating</th>
+			<th>Company</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in movies_with_actor">
+				<td><a href="#/movie/{{row.id}}" >{{row.title}}</a></td>
+				<td>{{row.year}}</td>
+				<td>{{row.rating}}</td>
+				<td>{{row.company}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

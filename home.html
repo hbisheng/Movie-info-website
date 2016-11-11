@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="cs143.project1c" lang="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <script src="libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
+	<script src="libs/angularjs/1.5.8/angular-route.min.js"></script>
+	<script src="libs/angularjs/1.5.8/angular-animate.min.js"></script>
+    <script src="libs/js/main.js"></script>
+	<script src="libs/js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+    <link  href="libs/css/fortable.css" rel="stylesheet">
+	<link  href="libs/css/bootstrap.min.css" rel="stylesheet">
+
+	<link  rel="stylesheet" href="libs/dist/angular-block-ui.min.css"/>
+
+	<script src="libs/dist/angular-block-ui.min.js"></script>
+	
+	<title>CS143 P1C</title>
+	</head>
+  <body>
+
+<style>
+  .horizontal-collapse {
+    height: 70px;
+  }
+  .navbar-collapse.in {
+    overflow-y: hidden;
+  }
+</style>
+
+<div>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			
+			<a class="navbar-brand" href="#/" >
+				CS143 P1C
+			</a>
+
+			<div class="btn-group" uib-dropdown dropdown-append-to-body>
+				<a class="navbar-brand" href id="simple-dropdown" uib-dropdown-toggle >
+					Add
+					<span class="caret"></span>
+				</a>
+			
+				<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="simple-dropdown">
+					<li><a href="#/add_actor">Actor/Director</a></li>
+					<li><a href="#/add_movie">Movie</a></li>
+					<li><a href="#/add_actor_to_movie">Actor to movie</a></li>
+					<li><a href="#/add_director_to_movie">Director to movie</a></li>
+				</ul>
+			</div>
+			
+			<div class="btn-group" uib-dropdown dropdown-append-to-body>
+				<a href="#/" class="navbar-brand" id="simple-dropdown">
+					Search
+				</a>
+			</div>
+		</div>
+	</nav>
+</div>
+
+<div ng-view> </div>
+
+</body>
+</html>

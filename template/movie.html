@@ -1,0 +1,98 @@
+<div uib-alert ng-class="'alert-danger'" ng-show="error_msg!=null"> 
+	{{error_msg}}
+</div>
+
+<div class="container" ng-show="movie!=null">
+
+	<h2> {{movie.title}} ({{movie.year}})</h2>
+
+	<div ng-show="directors!=null">
+		<h3> <label>Directors: </label></h3> <h4 ng-repeat="d in directors"> {{d.first + ' ' + d.last}}</h4>
+	</div>
+
+	<div ng-show="genres!=null">
+		<h3> <label>Genre: </label></h3> <h4 ng-repeat="tuple in genres"> {{tuple.genre}}</h4>
+	</div>
+
+	<h3> <label>Rating: </label></h3> <h4> {{movie.rating}}</h4>
+	<h3> <label>Company:</label></h3> <h4> {{movie.company}}</h4>
+
+
+	<table class="table table-striped" ng-show="actors!=null">
+		<h3 ng-show="actors!=null"><label>  Actors:</label> </h3>
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Role</th>
+			<th>Sex</th>
+			<th>Date of birth</th>
+			<th>Data of death</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in actors">
+				<td><a href="#/person/{{row.id}}"> {{row.first + " " + row.last}}</a></td>
+				<td>{{row.role}}</td>
+				<td>{{row.sex}}</td>
+				<td>{{row.dob}}</td>
+				<td>{{row.dod ? row.dod : 'NaN'}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<span ng-show="aver_score!=null">
+		<h3> <label>Score: </label></h3> 
+		<h4> {{aver_score}} ({{comments.length}} reviewer{{comments.length > 1 ? "s":""}})</h4> 
+	</span>
+
+	<h3><label> Reviews:</label></h3>
+	<h4 ng-show="comments==null">Nobody has reviewed this movie yet. </h4>
+	<table class="table table-striped" ng-show="comments!=null">
+		<thead>
+		<tr>
+			<th>Reviewer</th>
+			<th>rating</th>
+			<th>comment</th>
+			<th>time</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="row in comments">
+				<td>{{row.name}}</td>
+				<td>{{row.rating}}</td>
+				<td>{{row.comment}}</td>
+				<td>{{row.time}}</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<tr ng-repeat="row in comments">
+				<td>{{row.name}}</td>
+				<td>{{row.rating}}</td>
+				<td>{{row.comment}}</td>
+				<td>{{row.time}}</td>
+	</tr>
+
+	<h3><label>Rate this movie: </label></h3>
+	
+	
+	<div class="col-lg-8">	
+		<div uib-alert ng-class="'alert-'+user_review_alert.type" ng-show="user_review_alert!=null"> 
+			{{user_review_alert.msg}}
+		</div>
+		<h4>
+			<label> Score: </label>
+			<span uib-rating ng-init="rate=5" ng-model="rate" max="10" aria-labelledby="default-rating"></span>
+			<label>  {{rate}} </label>
+		</h4>
+	
+		<h4><label>User name:</label></h4>
+		<input class="form-control" type="text" ng-model="user_name">
+		
+		<h4><label>Comment:</label></h4>
+		<textarea class="form-control" rows="5" ng-model="user_comment"></textarea>
+		
+		<button type="submit" ng-click="submit_comment()" class="btn btn-primary btn-lg pull-right"> Submit </button>
+	</div>
+	
+</div>

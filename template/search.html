@@ -1,0 +1,74 @@
+
+<script src="libs/js/search.js"></script>
+<form class="form-horizontal">
+	<div uib-alert ng-class="'alert-success'" ng-show="msg!=null"> {{msg}} </div>
+	<div class="form-group form-group-lg">
+		<label class="col-sm-4 control-label">
+			Search for actors and movies
+		</label>
+		
+		<div class="col-sm-3" >
+			<input class="form-control" type="text" ng-model="keyword">
+		</div>
+		
+		<div class="col-sm-2">
+			<button type="submit" ng-click="submit()" class="btn btn-primary btn-lg btn-block"> Search </button>
+		</div>
+	</div>
+	<div uib-alert ng-class="'alert-danger'"  ng-show="errorMsg!=null"> {{errorMsg}} </div>
+	<hr>
+	<div class="form-group">
+		<div class="col-md-6">
+			<div uib-alert ng-class="'alert-warning'" ng-show="searched_word!=null&&actors==null"> 
+				No actors match {{searched_word}} 
+			</div>
+			
+			
+			<table class="table table-striped" ng-show="actors!=null">
+				<h2 ng-show="actors!=null"> Actors containing {{searched_word}} </h2>
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Sex</th>
+					<th>Date of birth</th>
+					<th>Date of death</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in actors">
+						<td><a href="#/person/{{row.id}}">{{row.first + " " + row.last}}</a></td>
+						<td>{{row.sex}}</td>
+						<td>{{row.dob}}</td>
+						<td>{{row.dod ? row.dod : 'NaN'}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="col-md-6">
+			<div uib-alert ng-class="'alert-warning'" ng-show="searched_word!=null&&movies==null"> 
+				No movies match {{searched_word}} 
+			</div>
+			
+			<table class="table table-striped" ng-show="movies!=null">
+				<h2 ng-show="movies!=null"> Movies containing {{searched_word}}</h2>
+				<thead>
+				<tr>
+					<th>Title</th>
+					<th>Year</th>
+					<th>Rating</th>
+					<th>Company</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in movies">
+						<td><a href="#/movie/{{row.id}}">{{row.title}}</a></td>
+						<td>{{row.year}}</td>
+						<td>{{row.rating}}</td>
+						<td>{{row.company}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,84 @@
+<div class="col-lg-4 col-lg-offset-4">
+	<form class="form-horizontal">		
+		<div class="form-group form-group-md text-center">
+			<label class="control-label text-center">
+				<h1>Add an actor/director</h1>
+			</label>
+		</div>
+	
+		<div class="form-group form-group-lg">
+			<label class="col-lg-4 control-label">
+				First Name
+			</label>
+			<div class="col-lg-8">
+				<input class="form-control" type="text" ng-model="firstname">
+			</div>
+		</div>
+		
+		<div class="form-group form-group-lg">
+			<label class="col-lg-4 control-label">
+				Last Name
+			</label>
+			<div class="col-lg-8">
+				<input class="form-control" type="text" ng-model="lastname">
+			</div>
+		</div>
+		
+		<div class="form-group form-group-lg">
+			<label class="col-lg-4 control-label">
+				Role
+			</label>
+			
+			<div class="col-lg-8 btn-group control-label" ng-init="role='actor'">
+				<label class="btn btn-default btn-lg" uib-btn-radio="'actor'" ng-model="role" >Actor</label>
+				<label class="btn btn-default btn-lg" uib-btn-radio="'director'" ng-model="role">Director</label>
+			</div>
+
+		</div>
+		
+		<div class="form-group form-group-lg">
+			<label class="col-lg-4 control-label">
+				Gender
+			</label>
+			
+			<div class="col-lg-8 btn-group control-label" ng-init="gender='Male'">
+				<label class="btn btn-default btn-lg" ng-model="gender" uib-btn-radio="'Male'" >Male</label>
+				<label class="btn btn-default btn-lg" ng-model="gender" uib-btn-radio="'Female'">Female</label>
+			</div>
+
+		</div>
+		
+		<div class="form-group form-group-lg">
+			<label class="col-lg-4 control-label">
+				Date of birth
+			</label>
+			<div class="col-lg-8">
+				<input class="form-control" type="text" ng-model="dob" placeholder="yyyy-MM-dd">
+			</div>
+			
+		</div>
+
+		<div class="form-group form-group-lg">
+			<label class="col-lg-4 control-label">
+				Date of death
+			</label>
+			<div class="col-lg-8">
+				<input class="form-control" type="text" ng-model="dod" placeholder="yyyy-MM-dd"> </input>
+			</div>
+			<label class="control-label" ng-show="false"> Parsed date: {{dod.toISOString().slice(0, 10)}} </label> 
+		</div>
+		
+		<div class="form-group form-group-lg ">
+			<div class="col-lg-offset-4 col-lg-8">
+				<label> (Leave dod blank if not applicable) </label>
+			</div>
+		</div>
+	
+		<div class="form-group form-group-lg">
+			<div class="col-lg-12">
+				<button type="submit" ng-click="submit()" class="btn btn-primary btn-lg btn-block">Add</button>
+			</div>
+		</div>
+				<div uib-alert ng-class="'alert-'+add_person_alert.type" ng-show="add_person_alert!=null"> {{add_person_alert.msg}} </div>
+	</form>
+</div>
